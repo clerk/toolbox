@@ -9,11 +9,11 @@ Toolbox is a production-grade library for connecting to MCP servers that require
 
 Toolbox was built with an emphasis on security and practical credential management. There are two critical differences compared to other utilities for leveraging MCP servers:
 
-**Access and refresh tokens stay on the server**
+### Access and refresh tokens stay on the server
 
 Access and refresh tokens for users are never sent to the frontend, which ensures they cannot be compromised in an XSS attack.
 
-**Only one OAuth Client is registered per OAuth Server**
+### Only one OAuth Client is registered per OAuth Server
 
 When using MCP, the service provider should manage a single OAuth Server, while your agent should operate one OAuth Client.
 
