@@ -1,0 +1,135 @@
+{
+  "name": "toolbox",
+  "version": "0.2.0",
+  "description": "A handy toolbox for connecting to third-party MCP servers",
+  "keywords": [
+    "mcp",
+    "model",
+    "context",
+    "protocol",
+    "clerk",
+    "auth"
+  ],
+  "homepage": "https://github.com/clerk/toolbox#readme",
+  "bugs": {
+    "url": "https://github.com/clerk/toolbox/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clerk/toolbox.git"
+  },
+  "license": "MIT",
+  "author": "Clerk",
+  "type": "module",
+  "main": "dist/",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    "./index": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./nextjs": {
+      "import": "./dist/nextjs/index.js",
+      "types": "./dist/nextjs/index.d.ts"
+    },
+    "./nextjs/server": {
+      "import": "./dist/nextjs/server.js",
+      "types": "./dist/nextjs/server.d.ts"
+    },
+    "./nextjs/auth": "./dist/nextjs/auth",
+    "./nextjs/auth/self-storage": {
+      "import": "./dist/nextjs/auth/self-storage.js",
+      "types": "./dist/nextjs/auth/self-storage.d.ts"
+    },
+    "./storage": "./dist/storage",
+    "./storage/fs": {
+      "import": "./dist/storage/fs.js",
+      "types": "./dist/storage/fs.d.ts"
+    },
+    "./storage/redis": {
+      "import": "./dist/storage/redis.js",
+      "types": "./dist/storage/redis.d.ts"
+    },
+    "./storage/postgres": {
+      "import": "./dist/storage/postgres.js",
+      "types": "./dist/storage/postgres.d.ts"
+    },
+    "./storage/sqlite": {
+      "import": "./dist/storage/sqlite.js",
+      "types": "./dist/storage/sqlite.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build",
+    "watch": "tsup --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "eventsource-parser": "^3.0.2",
+    "psl": "^1.15.0",
+    "zod": "^3.25.56"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.0",
+    "@types/node": "^22.15.21",
+    "@types/pg": "^8.10.0",
+    "@types/psl": "^1.1.3",
+    "@types/react": "^19.1.8",
+    "better-sqlite3": "^8.7.0",
+    "next": "^15.3.2",
+    "pg": "^8.11.0",
+    "redis": "^4.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "better-sqlite3": "^8.7.0",
+    "pg": "^8.11.0",
+    "react": "^19.1.0",
+    "redis": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "redis": {
+      "optional": true
+    },
+    "pg": {
+      "optional": true
+    },
+    "better-sqlite3": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts",
+      "src/nextjs/index.ts",
+      "src/nextjs/server.ts",
+      "src/nextjs/auth/self-storage.ts",
+      "src/storage/fs.ts",
+      "src/storage/redis.ts",
+      "src/storage/postgres.ts",
+      "src/storage/sqlite.ts"
+    ],
+    "format": [
+      "esm"
+    ],
+    "dts": true,
+    "clean": true,
+    "external": [
+      "redis",
+      "pg",
+      "better-sqlite3"
+    ]
+  }
+}
