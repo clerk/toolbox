@@ -145,7 +145,7 @@ export class SelfStorageAuthProvider
     // If not, we need to register the client.
     // Use the MCP SDK for convenience but this is just oauth
     try {
-      const dyanamicRegistration = await registerClient(
+      const dynamicRegistration = await registerClient(
         oauthMetadata.authorization_endpoint,
         {
           metadata: oauthMetadata,
@@ -157,8 +157,8 @@ export class SelfStorageAuthProvider
         }
       );
 
-      await this.store.write(storageKey, dyanamicRegistration);
-      return dyanamicRegistration;
+      await this.store.write(storageKey, dynamicRegistration);
+      return dynamicRegistration;
     } catch (error) {
       console.error("Failed to register OAuth client:", error);
       return {
